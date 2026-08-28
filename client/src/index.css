@@ -315,3 +315,69 @@ button:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Minimal chess UI overrides */
+.app-shell {
+  background: #101a17;
+}
+.app-shell::after { display: none; }
+.topbar {
+  height: 64px;
+  padding: 0 32px;
+  background: #0d1614;
+  backdrop-filter: none;
+  border-bottom-color: #263631;
+}
+.brand-mark { transform: none; border-radius: 7px; box-shadow: none; }
+.topnav button.active::after { box-shadow: none; }
+.app-main { width: min(1320px, calc(100% - 64px)); padding: 42px 0 24px; }
+.page-intro { align-items: center; padding-bottom: 28px; }
+.page-intro h1 { margin: 9px 0 10px; font-size: clamp(34px, 4vw, 52px); letter-spacing: -.045em; }
+.page-intro p { font-size: 13px; line-height: 1.55; }
+.intro-metrics { gap: 20px; }
+.metric-value { font-size: 18px; }
+.chess-arena, .camera-sidebar, .camera-lab-view { border-color: #263a34; background: #111e1a; box-shadow: none; }
+.chess-arena { border-radius: 8px; }
+.arena-header { padding: 18px 20px 15px; }
+.match-strip { padding: 12px 20px; background: #14221e; }
+.board-area { padding: 26px 24px 24px; background: #0f1a17; }
+.board-wrap { width: min(100%, 620px); padding: 0 14px; }
+.board-axis { color: #a9865b; font-size: 13px; }
+.top-axis { margin: 0 14px 7px; }
+.bottom-axis { margin: 7px 14px 0; }
+.board-frame { padding: 7px; border: 1px solid #6b4b2a; border-radius: 3px; background: #7a522b; box-shadow: none; }
+.board-surface { padding: 15px 12px; border-color: #805a33; background: #d2ad79; background-image: none; }
+.board-grid::before {
+  background: repeating-linear-gradient(90deg, transparent 0 calc(11.111111% - 1px), #74502d calc(11.111111% - 1px) 11.111111%), repeating-linear-gradient(0deg, transparent 0 calc(10% - 1px), #74502d calc(10% - 1px) 10%);
+}
+.board-cell::before, .board-cell::after { width: 6px; height: 6px; border-color: #74502d; }
+.chess-piece { width: 70%; height: 70%; font-size: clamp(15px, 2.5vw, 27px); box-shadow: 0 2px 3px rgba(52,28,10,.3), inset 0 0 0 1px rgba(255,245,221,.35); }
+.piece-red { color: #ae3e34; border-width: 2px; background: #f0d3a4; }
+.piece-black { color: #28382f; border-width: 2px; background: #e5c99a; }
+.board-cell:hover .chess-piece, .board-cell.selected .chess-piece { box-shadow: 0 3px 5px rgba(50,26,10,.35), 0 0 0 2px rgba(36,111,83,.42), inset 0 0 0 1px rgba(255,245,221,.35); }
+.board-cell.target { background: rgba(42,119,87,.14); }
+.move-dot { width: 9px; height: 9px; box-shadow: none; background: #347c5e; }
+.capture-ring { inset: 12%; border-style: solid; border-width: 2px; animation: none; }
+.arena-toolbar { padding: 12px 20px; background: #111e1a; }
+.move-history { padding: 11px 20px 13px; background: #0f1916; }
+.camera-sidebar { padding: 17px; border-radius: 8px; }
+.camera-visual { height: 132px; border-radius: 6px; }
+.camera-cta { margin-top: 11px; box-shadow: none; }
+.app-footer { padding-top: 19px; }
+
+@media (max-width: 1040px) {
+  .app-main { width: min(100% - 40px, 850px); }
+}
+@media (max-width: 680px) {
+  .topbar { height: 58px; padding: 0 14px; }
+  .app-main { width: calc(100% - 24px); padding-top: 28px; }
+  .page-intro { padding-bottom: 22px; }
+  .page-intro h1 { font-size: 36px; }
+  .page-intro p { font-size: 11px; }
+  .board-area { padding: 21px 8px 19px; }
+  .board-wrap { padding: 0 5px; }
+  .board-frame { padding: 5px; }
+  .board-surface { padding: 11px 8px; }
+  .chess-piece { width: 68%; height: 68%; }
+  .arena-header, .match-strip, .arena-toolbar, .move-history { padding-left: 13px; padding-right: 13px; }
+}
