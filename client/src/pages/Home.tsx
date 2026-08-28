@@ -410,12 +410,17 @@ export default function Home() {
       }
       setCameraActive(true);
       setCameraError(rear ? null : "Thiết bị chỉ cho phép một camera — CAM 02 đang chờ.");
+      const ambience = audioRef.current;
+      if (ambience && !audioOn) {
+        ambience.volume = 0.34;
+        ambience.play().then(() => setAudioOn(true)).catch(() => undefined);
+      }
       toast.success(rear ? "Đã bật đồng thời camera trước và sau." : "Đã bật camera trước. Không tìm thấy camera thứ hai.");
     } catch {
       setCameraError("Quyền camera chưa được cấp hoặc thiết bị đang bận.");
       toast.error("Hãy cấp quyền camera để bắt đầu dual stream.");
     }
-  }, [stopCameras]);
+  }, [audioOn, stopCameras]);
 
   useEffect(() => () => stopCameras(), [stopCameras]);
 

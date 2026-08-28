@@ -15,3 +15,7 @@ The second pass removes the generated background and grain layer from the active
 The active presentation is now a centered vertical 9:16 stage (480px maximum width) that fills mobile screens and reads as a phone-like experience on desktop. The board remains a responsive 9×10 layout with clean intersections, coordinates, river label, compact wood frame, and strong piece contrast.
 
 The generated ancient-war ambience is stored in WebDev storage and exposed through a header volume control. Browser interaction verification confirmed the button changes from “Bật âm thanh chiến trận” to “Tắt âm thanh chiến trận” after a user gesture, which satisfies autoplay policy while keeping the sound optional.
+
+## Focus mode pass
+
+The interface now renders only the enlarged Xiangqi board and two camera tiles inside a vertical 9:16 canvas; navigation, metrics, match header, move history, footer, and secondary lab view are hidden. Desktop preview centers the phone-like stage while mobile uses the full viewport. Browser verification confirmed the primary “Bật 2 camera ngay” action remains visible and permission errors appear as a compact toast without adding clutter.

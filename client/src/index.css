@@ -445,3 +445,42 @@ body { background: #07110f; }
 .keyboard-hint { margin-left: auto; }
 .audio-toggle { color: #7f978a; }
 .audio-toggle.audio-on { color: var(--jade); border-color: rgba(131,216,174,.35); background: rgba(131,216,174,.11); }
+
+/* Focus mode: board + two cameras only */
+.app-shell { width: min(100%, 480px); min-height: 100vh; background: #0a100f; }
+.topbar { display: none; }
+.app-main { width: 100%; padding: 10px 10px 18px; }
+.page-intro, .camera-alert, .arena-header, .match-strip, .arena-toolbar, .move-history, .camera-sidebar .side-heading, .camera-mini-stats, .app-footer { display: none; }
+.workspace-grid { display: flex; flex-direction: column; gap: 10px; }
+.chess-arena, .camera-sidebar { width: 100%; border: 0; border-radius: 10px; background: transparent; }
+.chess-arena { order: 1; overflow: visible; }
+.board-area { padding: 0; background: transparent; }
+.board-wrap { width: 100%; padding: 0 2px; }
+.board-axis { color: #d0a86b; font-size: 12px; font-weight: 700; }
+.top-axis { margin: 0 16px 5px; }
+.bottom-axis { margin: 5px 16px 0; }
+.board-frame { padding: 8px; border: 2px solid #a7783e; border-radius: 11px; background: #3c2416; box-shadow: 0 10px 24px rgba(0,0,0,.32), inset 0 0 0 1px #e4bd7c; }
+.board-surface { padding: 18px 15px; border: 2px solid #8a5a2f; border-radius: 4px; background: #d8b37b; box-shadow: inset 0 0 0 1px rgba(72,40,18,.4); }
+.board-grid::before { background: repeating-linear-gradient(90deg, transparent 0 calc(11.111111% - 1px), #68451f calc(11.111111% - 1px) 11.111111%), repeating-linear-gradient(0deg, transparent 0 calc(10% - 1px), #68451f calc(10% - 1px) 10%); }
+.board-cell::before, .board-cell::after { width: 7px; height: 7px; border-color: #68451f; }
+.chess-piece { width: 80%; height: 80%; font-size: clamp(18px, 6vw, 29px); border-width: 2px; box-shadow: 0 3px 5px rgba(52,28,10,.38), inset 0 0 0 2px rgba(255,245,221,.42); }
+.piece-red { color: #b12f27; background: #f4d7a5; }
+.piece-black { color: #24362d; background: #f0d2a0; }
+.board-cell:hover .chess-piece, .board-cell.selected .chess-piece { transform: scale(1.04); box-shadow: 0 4px 7px rgba(50,26,10,.4), 0 0 0 3px rgba(47,132,95,.48), inset 0 0 0 2px rgba(255,245,221,.42); }
+.board-cell.target { background: rgba(43,126,88,.18); }
+.move-dot { width: 12px; height: 12px; background: #267a55; box-shadow: 0 0 0 4px rgba(38,122,85,.18); }
+.capture-ring { inset: 8%; border: 3px solid #ba4939; animation: none; }
+.river-band { inset: 48.8% 15px auto; color: #71471f; font-size: clamp(15px, 4vw, 22px); letter-spacing: .2em; }
+.river-band .river-dash { color: rgba(110,72,34,.35); font-size: 10px; }
+.camera-sidebar { order: 2; display: block; padding: 0; }
+.camera-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.camera-visual { height: 148px; border: 1px solid #315044; border-radius: 8px; }
+.camera-cta { margin-top: 8px; padding: 9px 11px; border-radius: 7px; font-size: 10px; }
+@media (min-width: 481px) {
+  .app-shell { min-height: 100vh; }
+}
+@media (max-width: 360px) {
+  .app-main { padding-inline: 7px; }
+  .board-surface { padding-inline: 10px; }
+  .camera-visual { height: 126px; }
+}
