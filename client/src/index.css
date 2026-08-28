@@ -381,3 +381,67 @@ button:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
   .chess-piece { width: 68%; height: 68%; }
   .arena-header, .match-strip, .arena-toolbar, .move-history { padding-left: 13px; padding-right: 13px; }
 }
+
+/* 9:16 vertical edition */
+body { background: #07110f; }
+.app-shell {
+  width: min(100%, 480px);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #101a17;
+  border-inline: 1px solid #263631;
+}
+.topbar { padding: 0 14px; }
+.topnav, .secure-status { display: none; }
+.topbar-right { min-width: auto; gap: 8px; }
+.mobile-menu { display: grid; }
+.app-main { width: calc(100% - 24px); padding-top: 28px; }
+.page-intro { display: block; padding-bottom: 22px; }
+.page-intro h1 { font-size: 36px; }
+.page-intro p { font-size: 11px; line-height: 1.6; }
+.intro-metrics { width: 100%; justify-content: space-between; gap: 9px; margin-top: 22px; }
+.intro-metrics > div { flex: 1; min-width: 0; padding-left: 9px; }
+.metric-value { font-size: 17px; }
+.metric-label { font-size: 7px; white-space: normal; line-height: 1.3; }
+.workspace-grid { grid-template-columns: 1fr; gap: 12px; }
+.chess-arena, .camera-sidebar, .camera-lab-view { border-radius: 8px; }
+.arena-header, .match-strip, .arena-toolbar, .move-history { padding-left: 13px; padding-right: 13px; }
+.arena-header { padding-top: 17px; }
+.arena-header h2 { font-size: 19px; }
+.match-strip { gap: 8px; }
+.player-card { gap: 6px; }
+.player-card strong { font-size: 9px; }
+.player-card span:not(.status-dot) { font-size: 7px; }
+.clock { font-size: 8px; }
+.board-area { padding: 21px 8px 19px; }
+.board-wrap { width: 100%; padding: 0 5px; }
+.board-frame { padding: 5px; }
+.board-surface { padding: 11px 8px; }
+.board-axis { font-size: 12px; }
+.chess-piece { width: 68%; height: 68%; font-size: clamp(15px, 6vw, 25px); }
+.river-band { inset: 48.7% 9px auto; font-size: 13px; letter-spacing: .15em; }
+.river-band .river-dash { font-size: 7px; letter-spacing: .2em; }
+.arena-toolbar { display: block; padding-top: 13px; padding-bottom: 13px; }
+.toolbar-actions { margin-top: 10px; justify-content: space-between; }
+.tool-button { padding: 6px 5px; font-size: 9px; }
+.move-history { padding-top: 12px; padding-bottom: 12px; }
+.camera-sidebar { padding: 15px; }
+.camera-stack { grid-template-columns: 1fr 1fr; gap: 8px; }
+.camera-visual { height: 122px; }
+.camera-label, .camera-helper, .camera-resolution { font-size: 7px; }
+.camera-cta { margin-top: 12px; }
+.camera-mini-stats { margin-top: 15px; }
+.camera-lab-view { padding: 19px 15px; }
+.section-heading-row { display: block; }
+.section-heading-row h2 { font-size: 26px; }
+.section-heading-row p { font-size: 11px; }
+.primary-button { margin-top: 20px; }
+.camera-lab-grid { grid-template-columns: 1fr; gap: 11px; padding-top: 17px; }
+.camera-lab-grid .camera-visual { height: 220px; }
+.camera-note { align-items: flex-start; font-size: 10px; line-height: 1.5; }
+.camera-note .status-badge { display: none; }
+.app-footer { flex-wrap: wrap; padding: 20px 1px 0; font-size: 9px; }
+.footer-spacer { display: none; }
+.keyboard-hint { margin-left: auto; }
+.audio-toggle { color: #7f978a; }
+.audio-toggle.audio-on { color: var(--jade); border-color: rgba(131,216,174,.35); background: rgba(131,216,174,.11); }

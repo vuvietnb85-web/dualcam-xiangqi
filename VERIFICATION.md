@@ -9,3 +9,9 @@ Browser interaction check: the top navigation successfully switches from Arena t
 ## Minimal UI pass
 
 The second pass removes the generated background and grain layer from the active canvas, flattens cards, tightens spacing, and keeps only the jade/amber semantic accents. Desktop preview reads more like a focused chess room; the board has a clear 9×10 grid, consistent coordinates, traditional river band, restrained wood frame, and stronger piece contrast. Mobile preview keeps the complete board geometry legible without horizontal overflow.
+
+## 9:16 and audio pass
+
+The active presentation is now a centered vertical 9:16 stage (480px maximum width) that fills mobile screens and reads as a phone-like experience on desktop. The board remains a responsive 9×10 layout with clean intersections, coordinates, river label, compact wood frame, and strong piece contrast.
+
+The generated ancient-war ambience is stored in WebDev storage and exposed through a header volume control. Browser interaction verification confirmed the button changes from “Bật âm thanh chiến trận” to “Tắt âm thanh chiến trận” after a user gesture, which satisfies autoplay policy while keeping the sound optional.

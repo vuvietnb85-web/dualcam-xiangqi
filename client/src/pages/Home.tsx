@@ -27,6 +27,8 @@ import {
   Trophy,
   Undo2,
   Video,
+  Volume2,
+  VolumeX,
   Wifi,
   X,
   Zap,
@@ -356,7 +358,9 @@ export default function Home() {
   const [elapsed, setElapsed] = useState(0);
   const [cameraActive, setCameraActive] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
+  const [audioOn, setAudioOn] = useState(false);
   const [fullscreenRef, setFullscreenRef] = useState<React.RefObject<HTMLVideoElement | null> | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const frontVideoRef = useRef<HTMLVideoElement>(null);
   const rearVideoRef = useRef<HTMLVideoElement>(null);
   const streamsRef = useRef<MediaStream[]>([]);
@@ -414,6 +418,22 @@ export default function Home() {
   }, [stopCameras]);
 
   useEffect(() => () => stopCameras(), [stopCameras]);
+
+  const toggleAudio = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audioOn) {
+      audio.pause();
+      setAudioOn(false);
+      return;
+    }
+    try {
+      await audio.play();
+      setAudioOn(true);
+    } catch {
+      toast.error("Trình duyệt đã chặn âm thanh — hãy bấm lại để phát.");
+    }
+  };
 
   const selectPiece = (row: number, col: number) => {
     if (isThinking || turn !== RED) return;
@@ -492,7 +512,8 @@ export default function Home() {
 
   return (
     <div className="app-shell">
-      <header className="topbar"><div className="brand-lockup"><div className="brand-mark"><Swords size={18} /></div><div><div className="brand-name">DUAL<span>CAM</span> / XQ</div><div className="brand-sub">ARENA OS · 01</div></div></div><nav className="topnav" aria-label="Điều hướng chính"><button className={activeView === "arena" ? "active" : ""} onClick={() => setActiveView("arena")}><Grid2X2 size={15} /> Arena</button><button className={activeView === "camera" ? "active" : ""} onClick={() => setActiveView("camera")}><Aperture size={15} /> Camera lab</button></nav><div className="topbar-right"><span className="secure-status"><span className="status-dot" /> Local session</span><button className="avatar user-avatar">DN</button><button className="mobile-menu icon-button"><Menu size={18} /></button></div></header>
+      <audio ref={audioRef} src="/manus-storage/ancient-war-ambience_e10f0ad0.mp3" loop preload="metadata" />
+      <header className="topbar"><div className="brand-lockup"><div className="brand-mark"><Swords size={18} /></div><div><div className="brand-name">DUAL<span>CAM</span> / XQ</div><div className="brand-sub">ARENA OS · 01</div></div></div><nav className="topnav" aria-label="Điều hướng chính"><button className={activeView === "arena" ? "active" : ""} onClick={() => setActiveView("arena")}><Grid2X2 size={15} /> Arena</button><button className={activeView === "camera" ? "active" : ""} onClick={() => setActiveView("camera")}><Aperture size={15} /> Camera lab</button></nav><div className="topbar-right"><span className="secure-status"><span className="status-dot" /> Local session</span><button className={`icon-button audio-toggle ${audioOn ? "audio-on" : ""}`} onClick={toggleAudio} aria-label={audioOn ? "Tắt âm thanh chiến trận" : "Bật âm thanh chiến trận"}>{audioOn ? <Volume2 size={16} /> : <VolumeX size={16} />}</button><button className="avatar user-avatar">DN</button><button className="mobile-menu icon-button"><Menu size={18} /></button></div></header>
       <main className="app-main">
         <div className="page-intro"><div><span className="eyebrow"><Crosshair size={13} /> COMMAND CENTER / HÀ NỘI · 13:39</span><h1>Một ván cờ.<br /><em>Hai góc nhìn.</em></h1><p>Chơi cờ tướng với Hắc Long ở cấp độ siêu khó — đồng thời giữ trọn không gian trong tầm mắt.</p></div><div className="intro-metrics"><div><span className="metric-value"><span className="live-pulse" /> 02</span><span className="metric-label">camera ready</span></div><div><span className="metric-value">2480</span><span className="metric-label">AI rating</span></div><div><span className="metric-value">01:1</span><span className="metric-label">mode / local</span></div></div></div>
         {cameraError && <div className="camera-alert"><MicOff size={15} /><span>{cameraError}</span><button onClick={() => setCameraError(null)} aria-label="Đóng thông báo"><X size={15} /></button></div>}
