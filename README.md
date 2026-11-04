@@ -1,5 +1,7 @@
 # DualCam Xiangqi Arena — Chinese Chess (Cờ Tướng) vs AI with Dual Live Cameras
 
+🔗 **Live demo / Chơi thử ngay:** https://vuvietnb85-web.github.io/dualcam-xiangqi/
+
 **DualCam Xiangqi Arena is a mobile-first web app where you play Xiangqi (Chinese chess / cờ tướng) against a local minimax AI while two live device cameras (front and rear) are shown beside the board.**
 
 ## Features
