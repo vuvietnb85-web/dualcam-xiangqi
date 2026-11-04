@@ -1,3 +1,4 @@
+import { TaiwanBoardLines, TaiwanRiver } from "@/components/TaiwanBoard";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
@@ -45,8 +46,8 @@ type Move = { from: Position; to: Position; captured: Piece | null; piece: Piece
 const RED: Side = "red";
 const BLACK: Side = "black";
 const PIECE_LABELS: Record<Side, Record<PieceType, string>> = {
-  red: { general: "帥", advisor: "仕", elephant: "相", horse: "馬", chariot: "俥", cannon: "炮", soldier: "兵" },
-  black: { general: "將", advisor: "士", elephant: "象", horse: "馬", chariot: "車", cannon: "砲", soldier: "卒" },
+  red: { general: "帥", advisor: "仕", elephant: "相", horse: "傌", chariot: "俥", cannon: "炮", soldier: "兵" },
+  black: { general: "將", advisor: "士", elephant: "象", horse: "馬", chariot: "車", cannon: "包", soldier: "卒" },
 };
 const PIECE_NAMES: Record<PieceType, string> = {
   general: "Tướng",
@@ -307,15 +308,16 @@ function XiangqiBoard({ board, selected, targets, hint, onCellClick }: { board: 
     <div className="board-wrap">
       <div className="board-axis top-axis">{COL_LABELS.map((label) => <span key={label}>{label}</span>)}</div>
       <div className="board-frame">
-        <div className="board-surface">
-          <div className="river-band"><span>楚河</span><span className="river-dash">· · · · · · · · ·</span><span>漢界</span></div>
+        <div className="board-surface tw-board">
           <div className="board-grid">
+            <TaiwanBoardLines />
+            <TaiwanRiver />
             {board.map((row, r) => row.map((piece, c) => {
               const isSelected = selected?.[0] === r && selected?.[1] === c;
               const isTarget = targets.has(`${r}-${c}`);
               const isHint = hint?.[0] === r && hint?.[1] === c;
               return <button key={`${r}-${c}`} className={`board-cell ${isSelected ? "selected" : ""} ${isTarget ? "target" : ""} ${isHint ? "hinted" : ""}`} onClick={() => onCellClick(r, c)} aria-label={piece ? `${PIECE_NAMES[piece.type]} ${piece.side === RED ? "đỏ" : "đen"}` : `Ô ${coord([r, c])}`}>
-                {piece && <span className={`chess-piece piece-${piece.side}`}><span>{PIECE_LABELS[piece.side][piece.type]}</span></span>}
+                {piece && <span className={`chess-piece tw-piece tw-${piece.side}`}><span>{PIECE_LABELS[piece.side][piece.type]}</span></span>}
                 {isTarget && !piece && <span className="move-dot" />}
                 {isTarget && piece && <span className="capture-ring" />}
                 {isHint && <span className="hint-star"><Sparkles size={11} /></span>}
